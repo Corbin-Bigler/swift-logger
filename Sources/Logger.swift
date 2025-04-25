@@ -4,7 +4,7 @@
 import Foundation
 
 public class Logger {
-    static nonisolated(unsafe) private var level: LogLevel = .info
+    static nonisolated(unsafe) private var level: LogLevel = .debug
     @MainActor static func set(level: LogLevel) {
         self.level = level
     }
