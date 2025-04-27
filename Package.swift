@@ -5,14 +5,18 @@ import PackageDescription
 
 let package = Package(
     name: "swift-logger",
+    platforms: [
+        .macOS(.v11),
+        .iOS(.v14)
+    ],
     products: [
         .library(
-            name: "SwiftLogger",
-            targets: ["SwiftLogger"]),
+            name: "Logger",
+            targets: ["Logger"]),
     ],
     targets: [
         .target(
-            name: "SwiftLogger"),
+            name: "Logger"),
 
     ]
 )
