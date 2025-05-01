@@ -48,36 +48,36 @@ public final class Logger: @unchecked Sendable {
         }
     }
     
-    public func log(_ message: Any, tag: String? = nil, level: LogLevel, secure: Bool = false, file: String = #file, fileID: String = #fileID, line: Int = #line, column: Int = #column, function: String = #function) {
+    public func log(tag: String? = nil, _ message: Any, level: LogLevel, secure: Bool = false, file: String = #file, fileID: String = #fileID, line: Int = #line, column: Int = #column, function: String = #function) {
         let tag = tag ?? file.split(separator: "/").last?.split(separator: ".").first.flatMap { String($0) } ?? file
         log(Log(tag: tag, message: "\(message)", level: level, secure: secure, metadata:  ["file": file,"fileID": fileID,"line": line,"column": column,"function": function]))
     }
-    public func fault(_ message: Any, tag: String? = nil, secure: Bool = false, file: String = #file, fileID: String = #fileID, line: Int = #line, column: Int = #column, function: String = #function) {
-        log(message, tag: tag, level: .fault, secure: secure, file: file, fileID: fileID, line: line, column: column, function: function)
+    public func fault(tag: String? = nil, _ message: Any, secure: Bool = false, file: String = #file, fileID: String = #fileID, line: Int = #line, column: Int = #column, function: String = #function) {
+        log(tag: tag, message, level: .fault, secure: secure, file: file, fileID: fileID, line: line, column: column, function: function)
     }
-    public func error(_ message: Any, tag: String? = nil, secure: Bool = false, file: String = #file, fileID: String = #fileID, line: Int = #line, column: Int = #column, function: String = #function) {
-        log(message, tag: tag, level: .error, secure: secure, file: file, fileID: fileID, line: line, column: column, function: function)
+    public func error(tag: String? = nil, _ message: Any, secure: Bool = false, file: String = #file, fileID: String = #fileID, line: Int = #line, column: Int = #column, function: String = #function) {
+        log(tag: tag, message, level: .error, secure: secure, file: file, fileID: fileID, line: line, column: column, function: function)
     }
-    public func info(_ message: Any, tag: String? = nil, secure: Bool = false, file: String = #file, fileID: String = #fileID, line: Int = #line, column: Int = #column, function: String = #function) {
-        log(message, tag: tag, level: .info, secure: secure, file: file, fileID: fileID, line: line, column: column, function: function)
+    public func info(tag: String? = nil, _ message: Any, secure: Bool = false, file: String = #file, fileID: String = #fileID, line: Int = #line, column: Int = #column, function: String = #function) {
+        log(tag: tag, message, level: .info, secure: secure, file: file, fileID: fileID, line: line, column: column, function: function)
     }
-    public func debug(_ message: Any, tag: String? = nil, secure: Bool = false, file: String = #file, fileID: String = #fileID, line: Int = #line, column: Int = #column, function: String = #function) {
-        log(message, tag: tag, level: .debug, secure: secure, file: file, fileID: fileID, line: line, column: column, function: function)
+    public func debug(tag: String? = nil, _ message: Any, secure: Bool = false, file: String = #file, fileID: String = #fileID, line: Int = #line, column: Int = #column, function: String = #function) {
+        log(tag: tag, message, level: .debug, secure: secure, file: file, fileID: fileID, line: line, column: column, function: function)
     }
     
-    public static func log(_ message: Any, tag: String? = nil, level: LogLevel, secure: Bool = false, file: String = #file, fileID: String = #fileID, line: Int = #line, column: Int = #column, function: String = #function) {
-        shared.log(message, tag: tag, level: level, secure: secure, file: file, fileID: fileID, line: line, column: column, function: function)
+    public static func log(tag: String? = nil, _ message: Any, level: LogLevel, secure: Bool = false, file: String = #file, fileID: String = #fileID, line: Int = #line, column: Int = #column, function: String = #function) {
+        shared.log(tag: tag, message, level: level, secure: secure, file: file, fileID: fileID, line: line, column: column, function: function)
     }
-    public static func fault(_ message: Any, tag: String? = nil, secure: Bool = false, file: String = #file, fileID: String = #fileID, line: Int = #line, column: Int = #column, function: String = #function) {
-        log(message, tag: tag, level: .fault, secure: secure, file: file, fileID: fileID, line: line, column: column, function: function)
+    public static func fault(tag: String? = nil, _ message: Any, secure: Bool = false, file: String = #file, fileID: String = #fileID, line: Int = #line, column: Int = #column, function: String = #function) {
+        log(tag: tag, message, level: .fault, secure: secure, file: file, fileID: fileID, line: line, column: column, function: function)
     }
-    public static func error(_ message: Any, tag: String? = nil, secure: Bool = false, file: String = #file, fileID: String = #fileID, line: Int = #line, column: Int = #column, function: String = #function) {
-        log(message, tag: tag, level: .error, secure: secure, file: file, fileID: fileID, line: line, column: column, function: function)
+    public static func error(tag: String? = nil, _ message: Any, secure: Bool = false, file: String = #file, fileID: String = #fileID, line: Int = #line, column: Int = #column, function: String = #function) {
+        log(tag: tag, message, level: .error, secure: secure, file: file, fileID: fileID, line: line, column: column, function: function)
     }
-    public static func info(_ message: Any, tag: String? = nil, secure: Bool = false, file: String = #file, fileID: String = #fileID, line: Int = #line, column: Int = #column, function: String = #function) {
-        log(message, tag: tag, level: .info, secure: secure, file: file, fileID: fileID, line: line, column: column, function: function)
+    public static func info(tag: String? = nil, _ message: Any, secure: Bool = false, file: String = #file, fileID: String = #fileID, line: Int = #line, column: Int = #column, function: String = #function) {
+        log(tag: tag, message, level: .info, secure: secure, file: file, fileID: fileID, line: line, column: column, function: function)
     }
-    public static func debug(_ message: Any, tag: String? = nil, secure: Bool = false, file: String = #file, fileID: String = #fileID, line: Int = #line, column: Int = #column, function: String = #function) {
-        log(message, tag: tag, level: .debug, secure: secure, file: file, fileID: fileID, line: line, column: column, function: function)
+    public static func debug(tag: String? = nil, _ message: Any, secure: Bool = false, file: String = #file, fileID: String = #fileID, line: Int = #line, column: Int = #column, function: String = #function) {
+        log(tag: tag, message, level: .debug, secure: secure, file: file, fileID: fileID, line: line, column: column, function: function)
     }
 }
