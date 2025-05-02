@@ -35,6 +35,7 @@ public final class Logger: @unchecked Sendable {
     }
     
     func log(_ log: Log) {
+        subject.send(log)
         if let subject = queue.sync(execute: {subjects[log.tag]}) {
             subject.send(log)
         }
