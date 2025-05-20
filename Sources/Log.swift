@@ -15,5 +15,5 @@ public struct Log {
     public let secure: Bool
     public let metadata: [String: Any]
     
-    var formatted: String { "[\(tag)] \(message)" }
+    public var formatted: String { "[\(tag)] \(message)" }
 }
