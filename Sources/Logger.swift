@@ -5,7 +5,7 @@ import OSLog
 import Combine
 
 public final class Logger: @unchecked Sendable {
-    static private let logger = os.Logger(subsystem: Bundle.main.bundleIdentifier ?? "com.lionenergy.logging", category: "general")
+    static private let logger = os.Logger(subsystem: Bundle.main.bundleIdentifier ?? "com.thysmesi.logging", category: "general")
     private static var isPreview: Bool { ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] == "1" }
     public static let shared = Logger()
     
@@ -44,7 +44,11 @@ public final class Logger: @unchecked Sendable {
             if Self.isPreview {
                 print(log.formatted)
             } else {
-                Self.logger.log(level: log.level.osLogType, "\(log.formatted, privacy: .private)")
+                if log.secure {
+                    Self.logger.log(level: log.level.osLogType, "\(log.formatted, privacy: .private)")
+                } else {
+                    Self.logger.log(level: log.level.osLogType, "\(log.formatted, privacy: .public)")
+                }
             }
         }
     }
